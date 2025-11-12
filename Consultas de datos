@@ -1,0 +1,16 @@
+CONSULTA 1 (Usa un JOIN para unir las tablas calificaciones y alumnos a través del campo id_alumno, mostrando el 
+nombre del alumno y su nota en una sola vista)
+
+mysql> USE escuela_publica;
+SELECT alumnos.nombre, calificaciones.nota
+FROM calificaciones
+JOIN alumnos ON calificaciones.id_alumno = alumnos.id_alumno;
+
+CONSULTA 2 (Esta consulta une las tablas alumnos y calificaciones con un JOIN, agrupa los registros por cada alumno
+con GROUP BY, y usa la función AVG() para calcular el promedio de notas de cada uno)
+
+mysql> USE escuela_publica;
+SELECT alumnos.nombre, AVG(calificaciones.nota) AS promedio
+FROM calificaciones
+JOIN alumnos ON calificaciones.id_alumno = alumnos.id_alumno
+GROUP BY alumnos.nombre;
